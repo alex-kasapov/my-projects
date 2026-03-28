@@ -1,36 +1,25 @@
 const answer = document.querySelectorAll(".answer");
 const resultElement = document.querySelector(".result");
+let selectedAnswer = null;
 
-answer.forEach((answer, index) => {
+answer.forEach((answer) => {
     answer.addEventListener("click", () => {
-        resetStyle();
+        if (selectedAnswer) {
+            selectedAnswer.style.backgroundColor = "#f0f0f0";
+            selectedAnswer.style.color = "#000"
+        }
         answer.style.backgroundColor = "#007bff";
         answer.style.color = "#fff";
 
-let isCorrectByIndex;
-
-if (index === 1) {
-    isCorrectByIndex = true
-} else {
-    isCorrectByIndex = false
-}
-
-
-
-if (isCorrectByIndex) {
-    resultElement.innerText = "Верно !!!"
-} else {
-    resultElement.innerText = "Неверно ((("
-}
+        if (answer.innerText === '"12"') {
+            resultElement.innerText = "Верно !!!"
+        } else {
+            resultElement.innerText = "Неверно ((("
+        }
+        selectedAnswer = answer;
     });
 });
 
-function resetStyle() { 
-    answer.forEach(answer => {
-        answer.style.backgroundColor = "";
-        answer.style.color = "";
 
-    })
-}
 
 
